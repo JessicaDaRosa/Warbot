@@ -1186,11 +1186,11 @@ end
 GRAPHICS-WINDOW
 188
 10
-1277
-475
+1880
+729
 -1
 -1
-8.9412
+13.922
 1
 10
 1
@@ -1307,7 +1307,7 @@ CHOOSER
 display?
 display?
 "none" "energy" "missiles" "carrying-food?" "carried-walls-nrj" "mem0" "mem1" "mem2" "mem3" "mem4" "mem5"
-2
+0
 
 MONITOR
 30
@@ -1332,10 +1332,10 @@ energy_green
 11
 
 PLOT
-217
-475
-572
-702
+0
+523
+186
+818
 plot 1
 NIL
 NIL
@@ -1887,7 +1887,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.0
+NetLogo 6.1.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
