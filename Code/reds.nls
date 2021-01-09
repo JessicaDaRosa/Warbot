@@ -277,6 +277,8 @@ to goredRocketLauncher
 end
 
 to goredHarvester
+  
+  ;;si il voit une menace il appele a l'aide
   let en min-one-of perceive-robots ennemy [distance myself]
   if (en != nobody) [
     red-team-call-rocket-launcher-t en [breed] of en 
@@ -318,11 +320,11 @@ to goredBase
     
   ifelse ( count ((perceive-robots friend) with [breed = Harvesters] ) > 10 ) [ set mem6 10 ] [ set mem6 (mem6 - 1) ]
   ifelse ( count ((perceive-robots friend) with [breed = RocketLaunchers] ) > 10 ) [ set mem7 10 ] [ set mem7 (mem7 - 1) ]
-  ifelse ( count ((perceive-robots friend) with [breed = Explorers] ) != 0 ) [ set mem8 20 ] [ set mem8 (mem8 - 1) ]
+  ifelse ( count ((perceive-robots friend) with [breed = Explorers] ) < 2 ) [ set mem8 2 ] [ set mem8 (mem8 - 1) ]
   
+ 
   if ((energy > 12000) and (mem6 <= 0)) [new-Harvester self ]
-  if ((energy > 15000) and (mem7 <= 0)) [new-RocketLauncher self ]
-  if ((energy > 15000) and (mem8 <= 0)) [new-Explorer self ]
+  if ((energy > 15000) and (mem7 <= 0) ) [new-RocketLauncher self ] 
   
   if (nb-missiles < 10) and (energy > 1000) [ new-missile 50 ]
   if (nb-fafs < 10) and (energy > 1000) [ new-faf 10 ]
@@ -360,5 +362,5 @@ to initredBase
   new-Harvester self
   set mem6 5;; comme on ne peut créer qu'un seul robot par tour, mem6 sert à savoir combien de harvesters on doit encore créer
   set mem7 2
-  set mem8 2
+  set mem8 1
 end
