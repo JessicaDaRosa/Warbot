@@ -142,7 +142,7 @@ to red-team-call-explorer [ x y espece ]
 end
 
 to red-team-call-harvester [ x y ]
-  let h min-one-of perceive-specific-robots friend harvesters [ distancexy x y ]
+  let h min-one-of perceive-specific-robots friend harvesters with [mem5 = 0] [ distancexy x y ]
   if (h != nobody) [ ask h [ red-team-set-food-target x y ]]
 end
 
@@ -286,13 +286,16 @@ to goredHarvester
   ]
   
   red-team-drive-harvesters
-  red-team-dodge-missile
+
+  ;;famasse la nourriture qui est a cote de lui
   let f min-one-of perceive-food [ distance myself ]
   while [(f != nobody) and (distance f <= 2)] [
     take-food f
+    red-team-drive-harvesters ;;il appele un autre harvesteur 
     set f min-one-of perceive-food [ distance myself ]
   ]
-
+  
+  
   ifelse (mem4 = 1) or (carrying-food? > 500) or (energy < 100)
   [
     ; retour à la base
@@ -310,8 +313,12 @@ to goredHarvester
     ]
   ]
   [
+    ;;si il est ataque il essaie de s'enfuir
+    red-team-dodge-missile
     ;; cherche à manger
     red-team-harvesters-go-and-eat
+      
+    
   ]
 end
 
@@ -331,7 +338,7 @@ to goredBase
   
   
   red-team-select-target
-  if (not red-team-no-target?) [if (not any? perceive-robots-in-cone friend towards mem0)[red-team-shoot]]
+  if (not red-team-no-target?) [ let h min-one-of perceive-robots ennemy [ distance myself ] if (h != nobody and not any? perceive-robots-in-cone friend towards h)[red-team-shoot]]
   
 end
 
