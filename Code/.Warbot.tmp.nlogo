@@ -1184,13 +1184,13 @@ to go-perception
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-217
-20
-1399
-524
+201
+57
+1556
+633
 -1
 -1
-9.71
+11.132231405
 1
 10
 1
@@ -1209,23 +1209,6 @@ GRAPHICS-WINDOW
 1
 ticks
 30.0
-
-BUTTON
-0
-0
-0
-0
-NIL
-NIL
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
 
 BUTTON
 34
@@ -1349,10 +1332,10 @@ energy_green
 11
 
 PLOT
-0
-523
-186
-818
+11
+647
+874
+823
 plot 1
 NIL
 NIL
